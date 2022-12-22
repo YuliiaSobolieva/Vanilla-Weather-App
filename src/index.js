@@ -3,7 +3,8 @@ function searchingCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector(".search");
   let currentCity = document.querySelector(".current-city");
-  currentCity.innerHTML = cityInput.value;
+
+  currentCity.innerHTML = cityInput.value.toLowerCase();
 
   let apiKey = "97f8e93f00107773f88eafd933ce86b7";
   let apiUrlSearch = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric`;
@@ -24,7 +25,7 @@ function searchingCity2(event) {
   event.preventDefault();
   let cityInput = document.querySelector(".search");
   let currentCity = document.querySelector(".current-city");
-  currentCity.innerHTML = cityInput.value;
+  currentCity.innerHTML = cityInput.value.toLowerCase();
 
   let apiKey = "97f8e93f00107773f88eafd933ce86b7";
   let apiUrlSearch = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric`;
@@ -110,3 +111,4 @@ currentLocation.addEventListener("click", addCity);
 //3. week day and time for city that is not user location
 //4. images
 //5. forecast for next 5 days
+//Capital letter of the city - done

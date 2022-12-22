@@ -1,3 +1,139 @@
-h1 {
-  color: blue;
+.content {
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  border: 3px #52658f solid;
+  padding: 10px;
+}
+.search-pannel {
+  flex: 0 0 100%;
+}
+.left-part {
+  display: block;
+  flex: 0 0 50%;
+}
+.right-part {
+  display: block;
+  flex: 0 0 50%;
+  /* margin-top: 60px; */
+}
+.search {
+  padding: 0.375rem 0.75rem;
+  width: 50%;
+  border: 4px solid #006ec5;
+}
+.button {
+  display: inline;
+  font-weight: bold;
+}
+.add-location {
+  font-style: italic;
+  color: #43a5f5;
+}
+.current-city {
+  /* display: block; */
+  text-align: center;
+  flex: 0 0 100%;
+  font-family: "Roboto Slab", serif;
+  font-size: 56px;
+  /* font-weight: bold; */
+  color: #596aca;
+  margin: 10px auto 10px auto;
+}
+.current-data,
+.forecast {
+  display: flex;
+  flex-direction: row;
+}
+.current-day,
+.current-time {
+  color: #0f0f10;
+  display: inline;
+  font-size: 32px;
+  /* font-weight: bold; */
+  text-align: center;
+  /* margin-left: 5px; */
+  padding: 20px auto;
+  flex: 0 0 50%;
+}
+.current-day {
+  padding: 10px 10px 10px 40px;
+}
+.current-time {
+  padding: 10px 40px 10px 10px;
+}
+
+.current-day {
+  border-right: 3px #939aa9 solid;
+}
+
+/* .today-icon {
+  width: 100px;
+} */
+.current-icon,
+.current-temp,
+.tempVariants {
+  flex: 0 0 33%;
+  margin-top: 20px;
+
+  display: inline;
+}
+.current-icon,
+.current-temp {
+  text-align: center;
+}
+.current-icon {
+  padding-top: 30px;
+  color: #aabfd0;
+  font-size: 96px;
+}
+.current-temp,
+.current-temp-C,
+.current-temp-F {
+  color: #596aca;
+  font-size: 86px;
+
+  /* font-weight: bold; */
+}
+.current-temp-C,
+.current-temp-F {
+  color: #596aca;
+  font-size: 36px;
+}
+.current-temp-C {
+  border-right: 3px #939aa9 solid;
+  padding-right: 15px;
+}
+.current-temp-F {
+  padding-left: 15px;
+}
+
+.icon {
+  color: #aabfd0;
+  font-size: 38px;
+}
+.row-right {
+  border-bottom: 2px #29627e solid;
+}
+.col {
+  text-align: center;
+  font-size: 27px;
+  padding: 15px;
+}
+.col-weekday {
+  /* overflow: hidden; */
+  white-space: nowrap;
+  color: #006ec5;
+}
+.col-night {
+  color: #5a6275;
+}
+.col-day {
+  color: #0f0f10;
+}
+
+body {
+  display: block;
 }

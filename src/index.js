@@ -3,6 +3,7 @@ let cityInput;
 let currentCity;
 let currentTemp;
 let cityValue = "";
+// let cityLoc = "";
 let units = "metric";
 let apiKey = "97f8e93f00107773f88eafd933ce86b7";
 
@@ -17,6 +18,7 @@ function load() {
   cityInput = document.querySelector(".search");
   currentCity = document.querySelector(".current-city");
   currentTemp = document.querySelector(".current-temp");
+  // cityLoc = document.querySelector(".current-city");
 
   search.addEventListener("submit", searchingCity);
   tempC.addEventListener("click", changeTempC);
@@ -65,9 +67,10 @@ function getTempForMyLoc(position) {
     let temperature = Math.round(response.data.main.temp);
     currentTemp.innerHTML = temperature;
     let cityLoc = response.data.name;
-    let time = response.data.dt;
-    console.log(time);
+    console.log(cityLoc);
     cityValue = cityLoc;
+    console.log(cityValue);
+    currentCity.innerHTML = cityValue;
   }
   axios.get(`${apiUrl}&appid=${apiKey}`).then(setData);
 }

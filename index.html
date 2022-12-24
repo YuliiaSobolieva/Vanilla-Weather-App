@@ -28,10 +28,14 @@
     <div class="content">
       <div class="search-pannel">
         <form action="search" id="search-form">
-          <input type="text" class="search" />
+          <input
+            type="text"
+            placeholder="Type a city or choose 'my location'"
+            class="search"
+          />
           <button type="submit" class="btn btn-primary button">Search</button>
         </form>
-        <a class="add-location" href="+">your location</a>
+        <a class="add-location" href="+">my location</a>
       </div>
 
       <div class="left-part">
@@ -41,51 +45,14 @@
         </div>
         <div class="current-city"></div>
         <div class="forecast">
-          <i class="fa-solid fa-cloud current-icon"></i>
+          <img src="+" alt="" class="current-icon" />
           <span class="current-temp"></span
           ><span class="tempVariants"
-            ><a class="current-temp-C" href="+">°C</a
-            ><a class="current-temp-F" href="+">°F</a></span
-          >
-        </div>
-      </div>
-
-      <div class="right-part">
-        <div class="container">
-          <div class="row row-right">
-            <div class="col col-weekday">Today</div>
-            <div class="col col-night">6°</div>
-            <div class="col">
-              <i class="fa-solid fa-cloud icon"> </i>
-            </div>
-            <div class="col col-day">12°</div>
-          </div>
-          <div class="row row-right">
-            <div class="col col-weekday">Day 1</div>
-            <div class="col col-night">6°</div>
-            <div class="col">
-              <i class="fa-solid fa-cloud icon"> </i>
-            </div>
-            <div class="col col-day">11°</div>
-          </div>
-          <div class="row row-right">
-            <div class="col col-weekday">Day 2</div>
-            <div class="col col-night">5°</div>
-            <div class="col"><i class="fa-solid fa-wind icon"></i></div>
-            <div class="col col-day">10°</div>
-          </div>
-          <div class="row row-right">
-            <div class="col col-weekday">Day 3</div>
-            <div class="col col-night">7°</div>
-            <div class="col"><i class="fa-solid fa-cloud-sun icon"></i></div>
-            <div class="col col-day">11°</div>
-          </div>
-          <div class="row">
-            <div class="col col-weekday">Day 4</div>
-            <div class="col col-night">8°</div>
-            <div class="col"><i class="fa-solid fa-sun icon"></i></div>
-            <div class="col col-day">14°</div>
-          </div>
+            ><a class="current-temp-C" href="+"><span class="celsius"></span></a
+            ><span class="addSlash"></span
+            ><a class="current-temp-F" href="+"
+              ><span class="fahrenheit"></span></a
+          ></span>
         </div>
       </div>
     </div>

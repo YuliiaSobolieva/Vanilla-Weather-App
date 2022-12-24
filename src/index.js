@@ -1,5 +1,3 @@
-// using search - submit (buttun Search or enter)
-
 let cityInput;
 let currentCity;
 let currentTemp;
@@ -56,9 +54,43 @@ function getCurrentTemp() {
   return axios.get(`${apiUrlSearch}&appid=${apiKey}`);
 }
 
+function changeTempC(event) {
+  event.preventDefault();
+  units = "metric";
+
+  getCurrentTemp().then(setCurrentTemp);
+}
+
+function changeTempF(event) {
+  event.preventDefault();
+  units = "imperial";
+
+  getCurrentTemp().then(setCurrentTemp);
+}
+
+function searchingCity(event) {
+  event.preventDefault();
+  cityValue = cityInput.value.toLowerCase();
+  currentCity.innerHTML = cityValue;
+  getCurrentTemp().then(setCurrentTemp);
+}
+
 function setCurrentTemp(response) {
   const currentTemperature = Math.round(response.data.main.temp);
   currentTemp.innerHTML = `${currentTemperature}`;
+
+  let celsiusLabel = document.querySelector(".celsius");
+  celsiusLabel.innerHTML = "°C";
+  let fahrenheitLabel = document.querySelector(".fahrenheit");
+  fahrenheitLabel.innerHTML = "°F";
+
+  let iconElement = document.querySelector(".current-icon");
+  let iconId = response.data.weather[0].icon;
+  console.log(iconId);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconId}@2x.png`
+  );
 
   // setDay(response.data.dt * 1000);
   // setTime(response.data.dt * 1000);
@@ -95,29 +127,10 @@ function setCurrentTemp(response) {
   }
 }
 
-function changeTempC(event) {
-  event.preventDefault();
-  units = "metric";
-  getCurrentTemp().then(setCurrentTemp);
-}
-
-function changeTempF(event) {
-  event.preventDefault();
-  units = "imperial";
-  getCurrentTemp().then(setCurrentTemp);
-}
-
-function searchingCity(event) {
-  event.preventDefault();
-  cityValue = cityInput.value.toLowerCase();
-  currentCity.innerHTML = cityValue;
-  getCurrentTemp().then(setCurrentTemp);
-}
-
 //using user location
 function getTempForMyLoc(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
+  latitude = position.coords.latitude;
+  longitude = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}`;
 
   function setData(response) {
@@ -127,6 +140,20 @@ function getTempForMyLoc(position) {
     let cityLoc = response.data.name;
     cityValue = cityLoc;
     currentCity.innerHTML = cityValue;
+
+    let celsiusLabel = document.querySelector(".celsius");
+    celsiusLabel.innerHTML = "°C";
+    let slashLabel = document.querySelector(".addSlash");
+    slashLabel.innerHTML = "/";
+    let fahrenheitLabel = document.querySelector(".fahrenheit");
+    fahrenheitLabel.innerHTML = "°F";
+
+    let iconElement = document.querySelector(".current-icon");
+    let iconId = response.data.weather[0].icon;
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${iconId}@2x.png`
+    );
 
     // setDay(response.data.dt * 1000);
     // setTime(response.data.dt * 1000);
@@ -174,8 +201,8 @@ function addCity(event) {
 //1. F and C - DONE
 //2. change the time if minutes<10 - Done
 //3. week day and time for city that is not user location - only user location
-//4. images
-//5. forecast for next 5 days
+//4. icon - DONE
+//5. forecast for next 5 days - ???????
 //Capital letter of the city - done
 //6. add current temp if button search is using - DONE
 // new problem: use location, than search city and in F will use user's location info again - DONE

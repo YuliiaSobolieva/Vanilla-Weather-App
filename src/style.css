@@ -77,7 +77,7 @@
 .current-temp,
 .tempVariants {
   flex: 0 0 33%;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 
   display: inline;
 }
@@ -86,7 +86,7 @@
   text-align: center;
 }
 .current-icon {
-  padding-top: 30px;
+  /* padding-top: 30px; */
   color: #aabfd0;
   font-size: 96px;
 }
@@ -99,13 +99,17 @@
   /* font-weight: bold; */
 }
 .current-temp-C,
+.addSlash,
 .current-temp-F {
   color: #596aca;
   font-size: 36px;
 }
 .current-temp-C {
-  border-right: 3px #939aa9 solid;
-  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.addSlash {
+  padding-left: 15px;
 }
 .current-temp-F {
   padding-left: 15px;

@@ -37,25 +37,41 @@
         </form>
         <a class="add-location" href="+">my location</a>
       </div>
-
       <div class="left-part">
         <div class="current-data">
           <div class="current-day">Today</div>
           <div class="current-time">hh:mm</div>
         </div>
-        <div class="current-city"></div>
+        <div class="current-city"><span class="country"></span></div>
         <div class="forecast">
           <img src="+" alt="" class="current-icon" />
-          <span class="current-temp"></span
-          ><span class="tempVariants"
-            ><a class="current-temp-C" href="+"><span class="celsius"></span></a
-            ><span class="addSlash"></span
-            ><a class="current-temp-F" href="+"
-              ><span class="fahrenheit"></span></a
-          ></span>
+          <span class="current-temp"></span>
+          <div class="C-F-weather">
+            <div class="tempVariants">
+              <a class="current-temp-C" href="+"
+                ><span class="celsius"></span
+              ></a>
+              <span class="addSlash"></span>
+              <a class="current-temp-F" href="+"
+                ><span class="fahrenheit"></span
+              ></a>
+            </div>
+
+            <div class="weather">
+              <p class="feelsLike"></p>
+              <p class="humidity"></p>
+              <p class="wind"></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <p class="note">
+      <a href="https://superlative-marigold-066f4d.netlify.app/"
+        >Open-source code</a
+      >
+      by Yuliia Sobolieva
+    </p>
     <script src="src/index.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 25%;
+  width: 40%;
   border: 3px #52658f solid;
   padding: 15px;
 }
@@ -23,12 +23,13 @@
   font-style: italic;
   color: #43a5f5;
 }
-.left-part {
+.current-data-part,
+.forecast-part {
   display: block;
   flex: 0 0 100%;
 }
 .current-data,
-.forecast {
+.forecast-for-today {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -80,12 +81,13 @@
   font-size: 24px;
   display: inline;
 }
-.tempVariants,
-.weather {
+.tempVariants {
   font-size: 16px;
 }
 .weather {
   margin-top: 15px;
+  /* text-align: center; */
+  font-size: 14px;
 }
 .humidity,
 .feelsLike,
@@ -94,6 +96,28 @@
 }
 .note {
   text-align: center;
+}
+.forecast-part {
+  margin-top: 15px;
+  display: block;
+}
+.row {
+  text-align: center;
+  font-size: 16px;
+  color: #0f0f10;
+
+  /* display: inline;
+  flex: 0 0 20%; */
+}
+.col-2 {
+  margin-right: 20px;
+}
+.forecast-max-temperature {
+  font-weight: bold;
+}
+
+.forecast-min-temperature {
+  opacity: 0.4;
 }
 body {
   display: block;

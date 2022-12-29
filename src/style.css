@@ -6,6 +6,7 @@
   width: 40%;
   border: 3px #52658f solid;
   padding: 15px;
+  overflow: auto;
 }
 .search-pannel {
   flex: 0 0 100%;

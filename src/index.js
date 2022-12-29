@@ -75,7 +75,6 @@ function addLocation(event) {
 function changeTempC(event) {
   event.preventDefault();
   units = "metric";
-
   getCurrentTemp().then(setCurrentTemp);
 }
 
@@ -83,6 +82,7 @@ function changeTempC(event) {
 function changeTempF(event) {
   event.preventDefault();
   units = "imperial";
+  getForecast();
   getCurrentTemp().then(setCurrentTemp);
 }
 
@@ -90,6 +90,7 @@ function changeTempF(event) {
 function getCurrentTemp() {
   let apiUrlSearch = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=${units}`;
   return axios.get(`${apiUrlSearch}&appid=${apiKey}`);
+  getForecast();
 }
 
 //after getCurrentTemp
@@ -130,7 +131,7 @@ function getTempForMyLoc(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}`;
-
+  getForecast();
   axios.get(`${apiUrl}&appid=${apiKey}`).then(setData);
 }
 
@@ -168,7 +169,7 @@ function setData(response) {
   let wind = document.querySelector(".wind");
   let currentWind = response.data.wind.speed;
   wind.innerHTML = `Wind speed: ${currentWind}`;
-  getForecast();
+  // getForecast();
 }
 
 function displayForecast(response) {
@@ -204,7 +205,7 @@ function displayForecast(response) {
 }
 
 function getForecast() {
-  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric`;
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=${units}`;
 
   axios.get(`${apiUrlForecast}&appid=${apiKey}`).then(displayForecast);
 }

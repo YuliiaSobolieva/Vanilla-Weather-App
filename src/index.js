@@ -4,11 +4,11 @@ let currentTemp;
 let currentTime;
 let currentWeekDay;
 let cityValue = "";
-let searchingCityLatitude;
-let searchingCityLongitude;
+let latitude;
+let longitude;
+
 let units = "metric";
 let apiKey = "97f8e93f00107773f88eafd933ce86b7";
-let apiKeyForecast = "292929ff665169ef5a98dcc8cc29979a";
 let days = [
   "Sunday",
   "Monday",
@@ -38,7 +38,6 @@ function load() {
   currentLocation.addEventListener("click", addLocation);
 
   getDate();
-  displayForecast();
 }
 
 function getDate() {
@@ -121,24 +120,11 @@ function setCurrentTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${iconId}@2x.png`
   );
-  searchingCityLatitude = response.data.coord.lat;
-  searchingCityLongitude = response.data.coord.lon;
-  getForecastForSearchingCity();
+  latitude = response.data.coord.lat;
+  longitude = response.data.coord.lon;
+  getForecast();
 }
 
-function getForecastForSearchingCity() {
-  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${searchingCityLatitude}&lon=${searchingCityLongitude}&units=metric`;
-
-  axios
-    .get(`${apiUrlForecast}&appid=${apiKey}`)
-    .then(setForecastForSearchingCity);
-  console.log(apiUrlForecast);
-}
-
-function setForecastForSearchingCity(response) {
-  let forecastData = response.data;
-  console.log(forecastData);
-}
 //after click
 function getTempForMyLoc(position) {
   latitude = position.coords.latitude;
@@ -182,23 +168,32 @@ function setData(response) {
   let wind = document.querySelector(".wind");
   let currentWind = response.data.wind.speed;
   wind.innerHTML = `Wind speed: ${currentWind}`;
+  getForecast();
 }
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastData = response.data.daily;
+  console.log(forecastData);
   let forecastHTML = `<div class="row">`;
-  days.length = 5;
-  days.forEach(function (day) {
+  forecastData.length = 5;
+
+  forecastData.forEach(function (forecastDataDay) {
+    let daylyMaxTemp = Math.round(forecastDataDay.temp.max);
+    let daylyMinTemp = Math.round(forecastDataDay.temp.min);
+    let date = new Date(forecastDataDay.dt * 1000);
+    let day = date.getDay();
+    let weekDay = days[day];
     forecastHTML =
       forecastHTML +
       `
       <div class="col-2">
-          <div class="forecast-week-day">${day}</div>
-          <div><img src="+" alt="" class="forecast-icon" /></div>
+          <div class="forecast-week-day">${weekDay}</div>
+          <div><img src="http://openweathermap.org/img/wn/${forecastDataDay.weather[0].icon}@2x.png" alt="" class="forecast-icon" /></div>
           <div class="forecast-temperature">
-            <span class="forecast-max-temperature">18°</span>
+            <span class="forecast-max-temperature">${daylyMaxTemp}°</span>
             <span>-</span>
-            <span class="forecast-min-temperature">11°</span>
+            <span class="forecast-min-temperature">${daylyMinTemp}°</span>
           </div>
       </div>
      `;
@@ -206,4 +201,10 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast() {
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric`;
+
+  axios.get(`${apiUrlForecast}&appid=${apiKey}`).then(displayForecast);
 }
